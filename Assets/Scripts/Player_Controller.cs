@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection))]
 public class Player_Controller : MonoBehaviour
 {
     public Animator animator;
     public float walkSpeed = 5f;
+    private float jumpImpulse = 5f;
     Vector2 moveInput;
+    TouchingDirection touchingDirection;
 
     private bool _isJumping = false;
     [SerializeField]
@@ -20,7 +23,7 @@ public class Player_Controller : MonoBehaviour
         } private set
         {
             _isMoving = value;
-            animator.SetBool("IsRunning", value);
+            animator.SetBool(AnimationStrings.isMoving, value);
         } 
     }
 
@@ -45,6 +48,7 @@ public class Player_Controller : MonoBehaviour
 
     private void Awake()
     {
+        touchingDirection = GetComponent<TouchingDirection>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -64,6 +68,7 @@ public class Player_Controller : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveInput.x * walkSpeed * Time.deltaTime, rb.velocity.y);
+        animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -89,6 +94,11 @@ public class Player_Controller : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-
+        // Tarkista onko elossa!!
+        if(context.started && touchingDirection.IsGrounded)
+        {
+            animator.SetTrigger(AnimationStrings.jump);
+            rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        }
     }
 }
