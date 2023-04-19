@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Player
   - Background
-  - Grabbable
+  - Grappable
   - 
   - 
   - 
@@ -38,18 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 1895370345
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Forground
-    uniqueID: 2689989725
     locked: 0
   - name: Player
     uniqueID: 1974138177
     locked: 0
-  - name: Grappling
-    uniqueID: 3851003823
+  - name: Background
+    uniqueID: 1895370345
+    locked: 0
+  - name: Forground
+    uniqueID: 2689989725
     locked: 0

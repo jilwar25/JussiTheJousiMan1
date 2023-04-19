@@ -35,7 +35,7 @@
                 {
                     "name": "Shoot",
                     "type": "Button",
-                    "id": "64fa939b-287d-4587-a62d-5857e2ed788d",
+                    "id": "9e69dd2f-0f01-46fc-abc0-f70565debf4b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -232,11 +232,11 @@
                 },
                 {
                     "name": "",
-                    "id": "e9cf43f3-a7a5-42f7-b73e-f2a1dc8911f6",
+                    "id": "b769648d-b9d5-46bf-87e0-2cd6179e0ce0",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "",
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
