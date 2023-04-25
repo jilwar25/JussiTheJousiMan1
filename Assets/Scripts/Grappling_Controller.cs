@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Grappling_Controller : MonoBehaviour
 {
+    private Rigidbody2D rb;
     LineRenderer lineRenderer;
 
     [SerializeField]
@@ -26,16 +27,20 @@ public class Grappling_Controller : MonoBehaviour
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
         if (context.performed && !isGrappling)
         {
+            Debug.Log("yritä");
             StartGrapple();
         }
         else if (context.canceled && isGrappling)
         {
+            Debug.Log("stop");
+
             StopGrapple();
         }
     }
@@ -47,7 +52,7 @@ public class Grappling_Controller : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Debug.Log("Start grapple");
+            Debug.Log("osuma");
             isGrappling = true;
             target = hit.point;
             lineRenderer.enabled = true;
@@ -76,7 +81,7 @@ public class Grappling_Controller : MonoBehaviour
            // Debug.Log("isGrappling");
             t += Time.deltaTime;
             Vector2 newPos = Vector2.MoveTowards(transform.position, target, grappleStrength * Time.deltaTime);
-            transform.position = newPos;
+            rb.MovePosition(newPos);
             lineRenderer.SetPosition(0, transform.position);
             if (Vector2.Distance(transform.position, target) < 1f)
             {
