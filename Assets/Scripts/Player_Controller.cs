@@ -16,15 +16,18 @@ public class Player_Controller : MonoBehaviour
     private bool _isJumping = false;
     [SerializeField]
     private bool _isMoving = false;
-    public bool IsMoving { 
+    public bool IsMoving
+    {
         get
         {
             return _isMoving;
-        } private set
+        }
+        private set
         {
             _isMoving = value;
             animator.SetBool(AnimationStrings.isMoving, value);
-        } 
+
+        }
     }
 
     public bool _isFacingRight = true;
@@ -41,7 +44,7 @@ public class Player_Controller : MonoBehaviour
             {
                 transform.localScale *= new Vector2(-1, 1);
             }
-                _isFacingRight = value;
+            _isFacingRight = value;
         }
     }
     Rigidbody2D rb;
@@ -56,14 +59,14 @@ public class Player_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-     
-        
+
+
     }
     private void FixedUpdate()
     {
@@ -82,11 +85,11 @@ public class Player_Controller : MonoBehaviour
 
     private void setFacingDirection(Vector2 moveInput)
     {
-        if(moveInput.x > 0 && !IsFacingRight)
+        if (moveInput.x > 0 && !IsFacingRight)
         {
             IsFacingRight = true;
         }
-        else if(moveInput.x < 0 && IsFacingRight)
+        else if (moveInput.x < 0 && IsFacingRight)
         {
             IsFacingRight = false;
         }
@@ -95,7 +98,8 @@ public class Player_Controller : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         // Tarkista onko elossa!!
-        if(context.started && touchingDirection.IsGrounded)
+
+        if (context.started && touchingDirection.IsGrounded)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
