@@ -18,12 +18,14 @@ public class TouchingDirection : MonoBehaviour
     [SerializeField]
     private bool _isGrounded;
 
+
     public bool IsGrounded
     {
         get
         {
             return _isGrounded;
         }
+
         private set
         {
             _isGrounded = value;
@@ -74,4 +76,6 @@ public class TouchingDirection : MonoBehaviour
         IsOnWall = touchingCollider.Cast(wallCheckDirection, castFilter, wallHits, wallDistance) > 0;
         IsOnCeiling = touchingCollider.Cast(Vector2.up, castFilter, ceilingHits, ceilingDistance) > 0;
     }
+
 }
+

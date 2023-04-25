@@ -26,6 +26,7 @@ public class Player_Controller : MonoBehaviour
         {
             _isMoving = value;
             animator.SetBool(AnimationStrings.isMoving, value);
+
         }
     }
 
@@ -97,6 +98,7 @@ public class Player_Controller : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         // Tarkista onko elossa!!
+
         if (context.started && touchingDirection.IsGrounded)
         {
             animator.SetTrigger(AnimationStrings.jump);
